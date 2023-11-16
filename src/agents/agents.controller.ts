@@ -21,8 +21,8 @@ export class AgentsController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string, @Query('location') location: string) {
-    return this.agentsService.findOne(+id, location);
+  findOne(@Param('id') id: string) {
+    return this.agentsService.findOne(+id);
   }
 
   @Patch(':id')
@@ -31,7 +31,7 @@ export class AgentsController {
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string, @Query('location') location: string) {
-    return this.agentsService.remove(+id, location);
+  remove(@Param('id') id: string) {
+    return this.agentsService.remove(+id);
   }
 }

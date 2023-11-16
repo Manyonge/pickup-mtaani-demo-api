@@ -1,26 +1,29 @@
 import { Injectable } from '@nestjs/common';
 import { CreateAgentDto } from './dto/create-agent.dto';
 import { UpdateAgentDto } from './dto/update-agent.dto';
+import { supabase } from '../supabase';
 
 @Injectable()
 export class AgentsService {
-  create(createAgentDto: CreateAgentDto) {
-    return 'This action adds a new agent';
+  async create(createAgentDto: CreateAgentDto) {
+    return supabase.from('pickup mtaani agents').insert([createAgentDto]);
   }
 
-  findAll(location: string) {
-    return `This action returns all ${location} agents`;
+  async findAll(location: string) {
+    return supabase.from('pickup mtaani agents').select().eq('location', location);
   }
 
-  findOne(id: number, location: string) {
-    return `This action returns a ${location} #${id} agent`;
+  async findOne(id: number) {
+    return supabase.from('pickup mtaani agents').select().eq('id', id);
+
   }
 
-  update(id: number, updateAgentDto: UpdateAgentDto) {
-    return `This action updates a #${id} agent`;
+  async update(id: number, updateAgentDto: UpdateAgentDto) {
+    return supabase.from('pickup mtaani agents').update([updateAgentDto]);
+
   }
 
-  remove(id: number, location: string) {
-    return `This action removes a ${location} #${id} agent`;
+  async remove(id: number) {
+    return supabase.from('pickup mtaani agents').delete().eq('id', id);
   }
 }
