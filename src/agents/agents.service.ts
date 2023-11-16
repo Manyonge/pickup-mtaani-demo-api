@@ -8,19 +8,19 @@ export class AgentsService {
     return 'This action adds a new agent';
   }
 
-  findAll() {
-    return `This action returns all agents`;
+  findAll(location: string) {
+    return `This action returns all ${location} agents`;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} agent`;
+  findOne(id: number, location: string) {
+    return `This action returns a ${location} #${id} agent`;
   }
 
   update(id: number, updateAgentDto: UpdateAgentDto) {
     return `This action updates a #${id} agent`;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} agent`;
+  remove(id: number, location: string) {
+    return `This action removes a ${location} #${id} agent`;
   }
 }

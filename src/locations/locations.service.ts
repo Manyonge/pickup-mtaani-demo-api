@@ -16,8 +16,8 @@ export class LocationsService {
     return supabase.from('pickup mtaani locations').select().eq('id', id).single();
   }
 
-  async update(id: number, updateLoationDto: UpdateLocationDto) {
-    return supabase.from('pickup mtaani locations').update([updateLoationDto]).eq('id', id);
+  async update(id: number, updateLocationDto: UpdateLocationDto) {
+    return supabase.from('pickup mtaani locations').update([updateLocationDto]).eq('id', id);
   }
 
   async remove(id: number) {
