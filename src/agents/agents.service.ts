@@ -14,12 +14,12 @@ export class AgentsService {
   }
 
   async findOne(id: number) {
-    return supabase.from('pickup mtaani agents').select().eq('id', id);
+    return supabase.from('pickup mtaani agents').select().eq('id', id).single();
 
   }
 
   async update(id: number, updateAgentDto: UpdateAgentDto) {
-    return supabase.from('pickup mtaani agents').update([updateAgentDto]);
+    return supabase.from('pickup mtaani agents').update(updateAgentDto).eq('id', id);
 
   }
 
