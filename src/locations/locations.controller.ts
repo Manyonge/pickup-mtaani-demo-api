@@ -4,7 +4,7 @@ import { CreateLocationDto } from './dto/create-location.dto';
 import { UpdateLocationDto } from './dto/update-location.dto';
 import { ApiTags } from '@nestjs/swagger';
 
-@ApiTags('Tasks')
+@ApiTags('Locations')
 @Controller('locations')
 export class LocationsController {
   constructor(private readonly locationsService: LocationsService) {
