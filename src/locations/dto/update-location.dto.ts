@@ -1,4 +1,5 @@
-import { PartialType } from '@nestjs/mapped-types';
-import { CreateLocationDto } from './create-location.dto';
+import { PickType } from '@nestjs/swagger';
+import { LocationDto } from './location.dto';
 
-export class UpdateLocationDto extends PartialType(CreateLocationDto) {}
+export class UpdateLocationDto extends PickType(LocationDto, ['name'] as const) {
+}

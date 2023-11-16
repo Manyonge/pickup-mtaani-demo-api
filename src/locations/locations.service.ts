@@ -1,26 +1,26 @@
 import { Injectable } from '@nestjs/common';
-import { CreateLocationDto } from './dto/create-location.dto';
-import { UpdateLocationDto } from './dto/update-location.dto';
+import { CreateLocationDto, UpdateLocationDto } from './dto';
+import { supabase } from '../supabase';
 
 @Injectable()
 export class LocationsService {
-  create(createLocationDto: CreateLocationDto) {
-    return 'This action adds a new location';
+  async create(createLocationDto: CreateLocationDto) {
+    return supabase.from('pickup mtaani locations').insert(createLocationDto);
   }
 
-  findAll() {
-    return `This action returns all locations`;
+  async findAll() {
+    return supabase.from('pickup mtaani locations').select();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} location`;
+  async findOne(id: number) {
+    return supabase.from('pickup mtaani locations').select().eq('id', id).single();
   }
 
-  update(id: number, updateLocationDto: UpdateLocationDto) {
-    return `This action updates a #${id} location`;
+  async update(id: number, updateLocationDto: UpdateLocationDto) {
+    return supabase.from('pickup mtaani locations').update([updateLocationDto]).eq('id', id);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} location`;
+  async remove(id: number) {
+    return supabase.from('pickup mtaani locations').delete().eq('id', id);
   }
 }
